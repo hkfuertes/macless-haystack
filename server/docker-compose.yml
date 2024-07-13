@@ -1,0 +1,21 @@
+services:
+
+  server:
+    restart: unless-stopped
+    container_name: server
+    ports:
+      - 6176:6176
+    volumes:
+      - mh_data:/app/endpoint/data
+    image: christld/macless-haystack
+
+  anisette:
+    restart: unless-stopped
+    container_name: anisette
+    volumes:
+      - anisette_data:/home/Alcoholic/.config/anisette-v3
+    image: dadoum/anisette-v3-server
+
+volumes:
+  anisette_data:
+  mh_data:
